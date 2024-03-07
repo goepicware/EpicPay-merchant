@@ -7,7 +7,7 @@ export const apiUrlV2 = "https://walletapi.goepicware.com/apiv2/";
 export const apiUrlPro = "https://walletapi.goepicware.com/ninjapro/";
 export const apiUrlNotify = "https://ccpl.promobuddy.asia/Pushorder/";
 
-//export const baseUrl = "http://localhost:3000/";
+//export const baseUrl = "http://localhost:3001/";
 export const baseUrl = "https://merchant.goepicware.com/";
 
 export const stripeImage = "/img/stripe_logo.png";

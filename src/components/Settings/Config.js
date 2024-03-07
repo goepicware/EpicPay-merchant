@@ -1,9 +1,13 @@
 /* Live */
 //export const unquieID = "59145A47-4517-41B4-9D92-F6BA15DB571A";
-export const unquieID = (localStorage.getItem('company_app_id') === null || localStorage.getItem('company_app_id') === undefined) ? '' : localStorage.getItem('company_app_id');
+export const unquieID =
+  localStorage.getItem("company_app_id") === null ||
+  localStorage.getItem("company_app_id") === undefined
+    ? ""
+    : localStorage.getItem("company_app_id");
 export const apiUrl = "https://walletapi.goepicware.com/api/";
 
-//export const baseUrl = "http://localhost:3000/";
+//export const baseUrl = "http://192.168.0.226:3001/";
 export const baseUrl = "https://merchant.goepicware.com/";
 
 export const deliveryId = "634E6FA8-8DAF-4046-A494-FFC1FCF8BD11";

@@ -2333,10 +2333,6 @@ img.hf-icon {
 }
 
 .canceled-lnk { color: red !important; }
-
-
-
-
-
-
-
+.redeem-profie .voucher-detail-body {
+  margin-top: 10px;
+}

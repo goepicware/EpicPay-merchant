@@ -20,14 +20,17 @@ class RedeemForm extends Component {
     super(props);
     this.state = {
       current_page: "Redeem Credits",
-      user_credits: '',
-      user_credits_error: '',
+      user_credits: "",
+      user_credits_error: "",
       staticblocksList: [],
       termsandcondInfo: "",
     };
 
-    if(cookie.load("LoginUserId") === undefined || cookie.load("LoginUserId") === '') {
-        props.history.push("/");
+    if (
+      cookie.load("LoginUserId") === undefined ||
+      cookie.load("LoginUserId") === ""
+    ) {
+      props.history.push("/");
     }
 
     this.props.getStaticblocksList("&slug=terms-conditions");
@@ -43,27 +46,27 @@ class RedeemForm extends Component {
       });
     }
   }
-  
+
   handleFldChange(event) {
     const re = /^[0-9 \b]+$/;
     //if(event.target.value === "") {
-      var mblnumber = this.space(event.target.value);
-      var mblnumberLenght = mblnumber.length
-      this.setState({ user_credits: mblnumber });
+    var mblnumber = this.space(event.target.value);
+    var mblnumberLenght = mblnumber.length;
+    this.setState({ user_credits: mblnumber });
     //}
-    this.setState({ user_credits_error: '' });
+    this.setState({ user_credits_error: "" });
   }
 
   handleFldChange_old(event) {
     const re = /^[0-9 \b]+$/;
-    if(event.target.value === "" || re.test(event.target.value)) {
+    if (event.target.value === "" || re.test(event.target.value)) {
       var mblnumber = this.space(event.target.value);
       var mblnumberLenght = mblnumber.length;
-      if(mblnumberLenght <= 9) {
+      if (mblnumberLenght <= 9) {
         this.setState({ user_credits: mblnumber });
       }
     }
-    this.setState({ user_credits_error: '' });
+    this.setState({ user_credits_error: "" });
   }
 
   space(el) {
@@ -74,11 +77,11 @@ class RedeemForm extends Component {
   gotoRedeemFun(event) {
     event.preventDefault();
     let userCredits = this.state.user_credits;
-    if(parseFloat(userCredits)>0) {
-      localStorage.setItem('usercredits', userCredits);
-      this.props.history.push('/scanqrcode');
+    if (parseFloat(userCredits) > 0) {
+      localStorage.setItem("usercredits", userCredits);
+      this.props.history.push("/scanqrcode");
     } else {
-      this.setState({ user_credits_error: 'please enter credits' });
+      this.setState({ user_credits_error: "please enter credits" });
     }
   }
 
@@ -95,9 +98,22 @@ class RedeemForm extends Component {
                 Please enter credit amount
                 <br /> to redeem here
               </p>
-              <input type="input" inputMode='numeric' pattern="[0-9]*" placeholder="Enter credit amount here" value={this.state.user_credits} onChange={this.handleFldChange.bind(this)} />
-              {(this.state.user_credits_error != '') && <p className="error_info">{this.state.user_credits_error}</p>}
-              <a href="#" className="button" onClick={this.gotoRedeemFun.bind(this)}>
+              <input
+                type="input"
+                inputMode="decimal"
+                pattern="[0-9]*"
+                placeholder="Enter credit amount here"
+                value={this.state.user_credits}
+                onChange={this.handleFldChange.bind(this)}
+              />
+              {this.state.user_credits_error != "" && (
+                <p className="error_info">{this.state.user_credits_error}</p>
+              )}
+              <a
+                href="#"
+                className="button"
+                onClick={this.gotoRedeemFun.bind(this)}
+              >
                 Continue to scan QR
               </a>
             </div>
